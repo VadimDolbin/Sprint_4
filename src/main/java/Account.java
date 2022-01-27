@@ -4,6 +4,8 @@ import java.util.regex.Pattern;
 public class Account {
 
     private final String name;
+    private final String regex = "^(?=.{1,19}$)[А-Я]{1}[а-я]*\\s[А-Я]{1}[а-я]*$";
+    private final Pattern pattern = Pattern.compile(regex);
 
     public Account(String name) {
         this.name = name;
@@ -12,13 +14,7 @@ public class Account {
     public boolean checkNameToEmboss() {
         if (name == null)
             return false;
-        else if (name.length() < 3 || name.length() > 19)
-            return false;
-        else {
-            String regex = "^[А-Я]{1}[а-я]*\\s[А-Я]{1}[а-я]*$";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(name);
-            return matcher.matches();
-        }
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
     }
 }
