@@ -26,13 +26,11 @@ public class AccountTest {
                 {"ВадимДолбин ", false},
                 {"Вадим  Долбин", false},
                 {"ВадимДолбин", false},
-                {"вадим Долбин", false},
-                {"Вадим долбин", false},
         };
     }
 
     @Test
-    public void testUserNameConditions() throws Exception {
+    public void testUserNameConditions() {
         Account account = new Account(name);
         boolean actual = account.checkNameToEmboss();;
         assertEquals(expected, actual);
